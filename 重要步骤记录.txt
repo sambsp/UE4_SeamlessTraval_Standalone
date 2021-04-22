@@ -1,0 +1,15 @@
+1、入口场景中只负责显示游戏菜单 
+
+用自定义的GameMode，主要是GameMode的bUseSeamlessLevel = true
+用自定义的PlayerController，主要是蓝图中没有ClientTravel()这个方法开出来
+
+2、游戏菜单1进入第一张地图，ThirdPersonExampleMap
+
+里面放置一个Trigger Volume
+Trigger的时候负责蓝图调用AMyPlayerController::DoTravel()
+
+这里一定要注意GameMode不能为空，UE4在加载的时候不会默认使用原来的GameMode，而我们的GameMode在这里是最关键的
+
+3、Project Settings里面，transition map需要加入我们的transition map需要加入我们的transitionmap这个level，里面的蓝图只打印一个自身被加载的信息
+
+
